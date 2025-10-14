@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-10">
       <h1 className="text-6xl">Welcome</h1>
-      <Link to="/app">
+      <Link to="/login">
         <Button>Enter the app</Button>
       </Link>
     </div>
