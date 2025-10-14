@@ -17,7 +17,7 @@ function ExerciseSet({ set, exId, index }) {
 
   return (
     <div
-      className={`grid grid-cols-[50px_150px_150px_1fr] items-center gap-4 rounded-md p-2 ${check ? "bg-green-200" : null}`}
+      className={`grid grid-cols-[1fr_2fr_2fr_1fr] items-center gap-4 rounded-md p-2 ${check ? "bg-green-200" : null}`}
     >
       <span className="px-1 font-bold">{index}</span>
       <SetInput
@@ -49,7 +49,7 @@ function SetInput({ value, disabled, onChange }) {
       onChange={onChange}
       placeholder="10"
       type="number"
-      className="text-bold rounded-md border border-neutral-400 bg-white px-4 disabled:border-neutral-100 disabled:bg-green-100 disabled:font-semibold"
+      className="text-bold w-full rounded-md border border-neutral-400 bg-white px-4 disabled:border-neutral-100 disabled:bg-green-100 disabled:font-semibold"
     />
   );
 }

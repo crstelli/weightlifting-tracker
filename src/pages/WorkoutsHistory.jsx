@@ -5,6 +5,8 @@ import { Main } from "../components/Main";
 import { Navbar } from "../components/Navbar";
 import { WorkoutsList } from "../components/WorkoutsList";
 
+import { Footer } from "../components/Footer";
+
 function WorkoutsHistory() {
   return (
     <div>
@@ -15,6 +17,7 @@ function WorkoutsHistory() {
           <ButtonAdd classes={"mx-auto mt-8"}>New workout</ButtonAdd>
         </Link>
       </Main>
+      <Footer />
     </div>
   );
 }
