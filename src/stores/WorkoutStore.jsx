@@ -13,62 +13,7 @@ export const useWorkoutStore = create(
   immer((set) => ({
     id: Date.now(),
     title: "My New Workout",
-    exercises: [
-      {
-        id: 1,
-        title: "Bench Press",
-        sets: [
-          {
-            id: 1,
-            weight: 50,
-            reps: 10,
-            check: true,
-          },
-          {
-            id: 2,
-            weight: 50,
-            reps: 8,
-            check: true,
-          },
-          {
-            id: 3,
-            weight: 40,
-            reps: 12,
-            check: false,
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: "Lat Pulldown",
-        sets: [
-          {
-            id: 1,
-            weight: 30,
-            reps: 12,
-            check: false,
-          },
-          {
-            id: 2,
-            weight: 30,
-            reps: 10,
-            check: false,
-          },
-          {
-            id: 3,
-            weight: 30,
-            reps: 8,
-            check: false,
-          },
-          {
-            id: 4,
-            weight: 30,
-            reps: 8,
-            check: false,
-          },
-        ],
-      },
-    ],
+    exercises: [],
 
     // Workout Logic
     setTitle: (value) =>

@@ -2,7 +2,7 @@ import { X } from "lucide-react";
 
 function WorkoutModal({ workout, handleClose }) {
   return (
-    <div className="flex h-full w-full items-center justify-center">
+    <div className="flex h-full w-full justify-center">
       <div className="absolute w-[50%] max-w-[500px] min-w-[300px] rounded-md bg-white p-4">
         <div className="text-center">
           <h1 className="text-xl font-semibold text-neutral-800">

@@ -48,7 +48,7 @@ function Workout() {
   }
 
   return (
-    <div className="relative h-full pb-10">
+    <div className="relative min-h-screen pb-10">
       <Navbar />
       <Main>
         <WorkoutTitle />
