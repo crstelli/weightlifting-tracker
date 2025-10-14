@@ -4,5 +4,5 @@
 html,
 body,
 #root {
-  @apply min-h-screen w-full;
+  @apply min-h-screen w-screen max-w-full;
 }
