@@ -9,7 +9,7 @@ import { Footer } from "../components/Footer";
 
 function WorkoutsHistory() {
   return (
-    <div>
+    <div className="relative min-h-screen">
       <Navbar />
       <Main>
         <WorkoutsList />
