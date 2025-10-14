@@ -37,7 +37,7 @@ function ExerciseTitle({ children, exerciseId }) {
           <input
             type="text"
             value={children}
-            className="rounded-md border border-neutral-500 bg-neutral-100 pl-4"
+            className="w-full rounded-md border border-neutral-500 bg-neutral-100 pl-4"
             onChange={(e) => editExerciseTitle(exerciseId, e.target.value)}
           />
           <Button
