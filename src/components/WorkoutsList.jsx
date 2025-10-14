@@ -21,7 +21,7 @@ function WorkoutsList() {
           Start by clicking the button below
         </p>
       )}
-      <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <div className="mt-2 grid h-full grid-cols-1 gap-2 sm:grid-cols-2">
         {workouts.map((wk) => (
           <Workout
             key={wk.id}
