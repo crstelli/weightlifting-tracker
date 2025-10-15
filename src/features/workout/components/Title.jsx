@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Pen } from "lucide-react";
 
 import { useTitle, useSetTitle } from "../hooks/useWorkout";
-import { Button } from "./Button";
+import { Button } from "../../../shared/ui/Button";
 
-function WorkoutTitle() {
+function Title() {
   const [isEditing, setIsEditing] = useState(false);
 
   const title = useTitle();
@@ -25,8 +25,7 @@ function WorkoutTitle() {
           <Button
             onClick={() => {
               title && setIsEditing(false);
-            }}
-          >
+            }}>
             Save
           </Button>
         </>
@@ -43,4 +42,4 @@ function WorkoutTitle() {
   );
 }
 
-export { WorkoutTitle };
+export { Title };

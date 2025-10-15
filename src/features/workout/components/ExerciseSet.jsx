@@ -17,15 +17,14 @@ function ExerciseSet({ set, exId, index }) {
 
   return (
     <div
-      className={`grid grid-cols-[1fr_2fr_2fr_1fr] items-center gap-4 rounded-md p-2 ${check ? "bg-green-200" : null}`}
-    >
+      className={`grid grid-cols-[1fr_2fr_2fr_1fr] items-center gap-4 rounded-md p-2 ${check ? "bg-green-200" : null}`}>
       <span className="px-1 font-bold">{index}</span>
-      <SetInput
+      <Input
         onChange={(e) => changeWeight(id, exId, e.target.value)}
         value={weight || ""}
         disabled={check}
       />
-      <SetInput
+      <Input
         onChange={(e) => changeReps(id, exId, e.target.value)}
         value={reps || ""}
         disabled={check}
@@ -41,7 +40,7 @@ function ExerciseSet({ set, exId, index }) {
   );
 }
 
-function SetInput({ value, disabled, onChange }) {
+function Input({ value, disabled, onChange }) {
   return (
     <input
       value={value}

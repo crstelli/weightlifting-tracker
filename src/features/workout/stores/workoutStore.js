@@ -9,11 +9,17 @@ function findSet(state, exerciseId, setId) {
   return findExercise(state, exerciseId).sets.find((s) => s.id === setId);
 }
 
-export const useWorkoutStore = create(
-  immer((set) => ({
+function getInitialState() {
+  return {
     id: Date.now(),
     title: "My New Workout",
     exercises: [],
+  };
+}
+
+export const useWorkoutStore = create(
+  immer((set) => ({
+    ...getInitialState(),
 
     // Workout Logic
     setTitle: (value) =>
@@ -22,11 +28,7 @@ export const useWorkoutStore = create(
       }),
 
     reset: () => {
-      set(() => ({
-        id: Date.now(),
-        title: "My New Workout",
-        exercises: [],
-      }));
+      set(() => getInitialState());
     },
 
     // Exercise Logic

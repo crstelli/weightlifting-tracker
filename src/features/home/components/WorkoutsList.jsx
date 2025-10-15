@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useWorkouts } from "../hooks/useWorkouts";
 
-import { SectionTitle } from "./SectionTitle";
+import { SectionTitle } from "../../../shared/ui/SectionTitle";
+import { Modal } from "../../../shared/ui/Modal";
 import { WorkoutModal } from "./WorkoutModal";
-import { Modal } from "./Modal";
 
 function WorkoutsList() {
   const workouts = useWorkouts();
-
   const [selectedWorkout, setSelectedWorkout] = useState({});
 
   return (
@@ -23,7 +22,7 @@ function WorkoutsList() {
       )}
       <div className="mt-2 grid h-full grid-cols-1 gap-2 sm:grid-cols-2">
         {workouts.map((wk) => (
-          <Workout
+          <WorkoutElement
             key={wk.id}
             title={wk.title}
             duration={wk.duration}
@@ -44,12 +43,11 @@ function WorkoutsList() {
   );
 }
 
-function Workout({ title, duration, exercises, onClick }) {
+function WorkoutElement({ title, duration, exercises, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="grid cursor-pointer grid-cols-1 items-center rounded-md border border-neutral-400 bg-neutral-100 p-2 text-center sm:grid-cols-[2fr_1fr] sm:grid-rows-2"
-    >
+      className="grid cursor-pointer grid-cols-1 items-center rounded-md border border-neutral-400 bg-neutral-100 p-2 text-center sm:grid-cols-[2fr_1fr] sm:grid-rows-2">
       <p className="row-span-2 font-semibold">{title}</p>
       <span className="mt-2 sm:mt-0">{duration} min.</span>
       <span>{exercises} exercises</span>

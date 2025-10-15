@@ -1,19 +1,20 @@
+import { useState } from "react";
 import { Pen } from "lucide-react";
 
-import { ExerciseSet } from "./ExerciseSet";
-import { ButtonAdd } from "./ButtonAdd";
-import { Button } from "./Button";
-
 import { useAddSet, useEditExerciseTitle } from "../hooks/useWorkout";
-import { useState } from "react";
+
+import { ExerciseSet } from "./ExerciseSet";
+
+import { ButtonAdd } from "../../../shared/ui/ButtonAdd";
+import { Button } from "../../../shared/ui/Button";
 
 function Exercise({ title, sets, id }) {
   const addSet = useAddSet();
 
   return (
     <div className="mx-auto mt-4 flex flex-col rounded-md border border-neutral-400 bg-neutral-100 p-4">
-      <ExerciseTitle exerciseId={id}>{title}</ExerciseTitle>
-      <ExerciseHeader />
+      <Title exerciseId={id}>{title}</Title>
+      <Header />
       <div className="mt-2 flex flex-col">
         {sets.map((s, i) => (
           <ExerciseSet key={s.id} set={s} index={i + 1} exId={id} />
@@ -26,9 +27,9 @@ function Exercise({ title, sets, id }) {
   );
 }
 
-function ExerciseTitle({ children, exerciseId }) {
+function Title({ children, exerciseId }) {
   const [isEditing, setIsEditing] = useState(false);
-  const editExerciseTitle = useEditExerciseTitle();
+  const editTitle = useEditExerciseTitle();
 
   return (
     <div className="flex gap-2 text-lg font-medium tracking-[1.5px]">
@@ -38,13 +39,12 @@ function ExerciseTitle({ children, exerciseId }) {
             type="text"
             value={children}
             className="w-full rounded-md border border-neutral-500 bg-neutral-100 pl-4"
-            onChange={(e) => editExerciseTitle(exerciseId, e.target.value)}
+            onChange={(e) => editTitle(exerciseId, e.target.value)}
           />
           <Button
             onClick={() =>
               children.length > 1 && children.length < 20 && setIsEditing(false)
-            }
-          >
+            }>
             Save
           </Button>
         </>
@@ -60,7 +60,7 @@ function ExerciseTitle({ children, exerciseId }) {
   );
 }
 
-function ExerciseHeader() {
+function Header() {
   return (
     <div className="mt-2 grid w-full grid-cols-[1fr_2fr_2fr_1fr] gap-4">
       <span className="font-semibold">Set</span>

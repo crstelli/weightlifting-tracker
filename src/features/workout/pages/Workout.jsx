@@ -6,17 +6,16 @@ import {
   useReset,
   useWorkout,
 } from "../hooks/useWorkout";
+import { useAddWorkout } from "../../home/hooks/useWorkouts";
 
-import { Navbar } from "../components/Navbar";
-import { Main } from "../components/Main";
-import { Footer } from "../components/Footer";
+import { Navbar } from "../../../shared/ui/Navbar";
+import { Main } from "../../../shared/ui/Main";
+import { Footer } from "../../../shared/ui/Footer";
+import { ButtonAdd } from "../../../shared/ui/ButtonAdd";
+import { Button } from "../../../shared/ui/Button";
 
-import { WorkoutTitle } from "../components/WorkoutTitle";
+import { Title } from "../components/Title";
 import { Exercise } from "../components/Exercise";
-
-import { ButtonAdd } from "../components/ButtonAdd";
-import { Button } from "../components/Button";
-import { useAddWorkout } from "../hooks/useWorkouts";
 
 function Workout() {
   const navigate = useNavigate();
@@ -38,12 +37,12 @@ function Workout() {
 
     addWorkout(newWorkout);
 
-    navigate("/app");
+    navigate("/home");
     reset();
   }
 
   function handleDiscard() {
-    navigate("/app");
+    navigate("/home");
     reset();
   }
 
@@ -51,7 +50,7 @@ function Workout() {
     <div className="relative min-h-screen pb-10">
       <Navbar />
       <Main>
-        <WorkoutTitle />
+        <Title />
         <div className="mx-auto w-[90%] max-w-[500px] min-w-[300px]">
           {exercises.map((ex) => (
             <Exercise key={ex.id} id={ex.id} title={ex.title} sets={ex.sets} />
@@ -67,16 +66,14 @@ function Workout() {
               bg={
                 "bg-gradient-to-l from-green-400/80 to-green-400 text-neutral-800"
               }
-              classes={"mx-auto block "}
-            >
+              classes={"mx-auto block "}>
               Finish Workout
             </Button>
           )}
           <Button
             onClick={handleDiscard}
             bg={"bg-gradient-to-l from-red-400/80 to-red-400 text-neutral-800"}
-            classes={"mx-auto block mt-2"}
-          >
+            classes={"mx-auto block mt-2"}>
             Discard Workout
           </Button>
         </div>

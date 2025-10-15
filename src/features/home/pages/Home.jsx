@@ -1,13 +1,13 @@
 import { Link } from "react-router";
 
-import { ButtonAdd } from "../components/ButtonAdd";
-import { Main } from "../components/Main";
-import { Navbar } from "../components/Navbar";
 import { WorkoutsList } from "../components/WorkoutsList";
 
-import { Footer } from "../components/Footer";
+import { Navbar } from "../../../shared/ui/Navbar";
+import { Main } from "../../../shared/ui/Main";
+import { Footer } from "../../../shared/ui/Footer";
+import { ButtonAdd } from "../../../shared/ui/ButtonAdd";
 
-function WorkoutsHistory() {
+function Home() {
   return (
     <div className="relative min-h-screen">
       <Navbar />
@@ -22,4 +22,4 @@ function WorkoutsHistory() {
   );
 }
 
-export { WorkoutsHistory };
+export { Home };
