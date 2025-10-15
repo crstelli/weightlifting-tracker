@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 
 import { Landing } from "./features/landing/pages/Landing";
 import { Login } from "./features/login/pages/Login";
+import { Signup } from "./features/signup/pages/Signup";
 import { Home } from "./features/home/pages/Home";
 import { Workout } from "./features/workout/pages/Workout";
 
@@ -17,6 +18,7 @@ function AnimatedRoutes() {
         <Route path="home" element={<Home />} />
         <Route path="workout" element={<Workout />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
       </Routes>
     </AnimatePresence>
   );

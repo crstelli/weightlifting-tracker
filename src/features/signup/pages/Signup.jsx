@@ -1,23 +1,22 @@
-// eslint-disable-next-line no-unused-vars
-import { motion } from "motion/react";
 import { useState } from "react";
 import { Link } from "react-router";
+
+import { useSignUp } from "../hooks/useSignup";
 
 import { AnimatedDiv } from "../../../shared/ui/AnimatedDiv";
 import { Button } from "../../../shared/ui/Button";
 import { Spinner } from "../../../shared/ui/Spinner";
 
-import { useLogin } from "../hooks/useLogin";
-
-function Login() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { isLoading, handleLogin } = useLogin();
+  const { isLoading, handleSignUp } = useSignUp();
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleLogin(email, password);
+    handleSignUp(email, password, confirmPassword);
   }
 
   return (
@@ -26,7 +25,7 @@ function Login() {
         onSubmit={handleSubmit}
         className="flex h-screen w-full flex-col items-center justify-center gap-2">
         <h1 className="text-center font-[Nunito] text-2xl font-thin uppercase">
-          Log in into your account
+          Create a new Account
         </h1>
         <input
           value={email}
@@ -44,17 +43,25 @@ function Login() {
           type="password"
           placeholder="Password"
         />
+        <input
+          value={confirmPassword}
+          disabled={isLoading}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          className="rounded-md border border-neutral-500 px-4 py-2 disabled:bg-neutral-200 disabled:text-neutral-400"
+          type="password"
+          placeholder="Confirm Password"
+        />
         {isLoading ? (
           <Spinner />
         ) : (
           <>
-            <Button classes={"mt-2"}>Log In</Button>
+            <Button classes={"mt-2"}>Sign Up</Button>
             <p className="mt-2 text-lg">
               Or{" "}
               <Link
                 className="text cursor-pointer border-b-1 font-bold"
-                to="/signup">
-                Sign Up
+                to="/login">
+                Log In
               </Link>
             </p>
           </>
@@ -64,4 +71,4 @@ function Login() {
   );
 }
 
-export { Login };
+export { Signup };
