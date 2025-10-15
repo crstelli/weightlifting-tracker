@@ -14,11 +14,10 @@ import { Navbar } from "../../../shared/ui/Navbar";
 import { Main } from "../../../shared/ui/Main";
 import { Footer } from "../../../shared/ui/Footer";
 import { ButtonAdd } from "../../../shared/ui/ButtonAdd";
-import { Button } from "../../../shared/ui/Button";
 
 import { Title } from "../components/Title";
-import { Exercise } from "../components/Exercise";
-import { Timer } from "../components/Timer";
+import { ExercisesList } from "../components/ExercisesList";
+import { Actions } from "../components/Actions";
 
 function Workout() {
   const navigate = useNavigate();
@@ -62,34 +61,16 @@ function Workout() {
       <Navbar />
       <Main>
         <Title />
-        <div className="mx-auto w-[90%] max-w-[500px] min-w-[300px]">
-          {exercises.map((ex) => (
-            <Exercise key={ex.id} id={ex.id} title={ex.title} sets={ex.sets} />
-          ))}
-        </div>
+        <ExercisesList exercises={exercises} />
         <ButtonAdd onClick={() => addExercise()} classes={"mx-auto mt-8"}>
           Add Exercise
         </ButtonAdd>
-        <div className="mt-10">
-          <Timer time={workout.duration} />
-          {exercises.length > 0 && (
-            <Button
-              onClick={handleFinish}
-              bg={
-                "bg-gradient-to-l from-green-400/80 to-green-400 text-neutral-800"
-              }
-              classes={"mx-auto block "}>
-              Finish Workout
-            </Button>
-          )}
-
-          <Button
-            onClick={handleDiscard}
-            bg={"bg-gradient-to-l from-red-400/80 to-red-400 text-neutral-800"}
-            classes={"mx-auto block mt-2"}>
-            Discard Workout
-          </Button>
-        </div>
+        <Actions
+          exercisesLength={exercises.length}
+          onFinish={handleFinish}
+          onDiscard={handleDiscard}
+          duration={workout.duration}
+        />
       </Main>
       <Footer />
     </div>
