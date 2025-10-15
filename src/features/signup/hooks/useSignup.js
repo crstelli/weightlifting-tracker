@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
-import { signUp } from "../utils/signup";
+import { signUp } from "../utils/signUp";
 
 function useSignUp() {
   const [isLoading, setIsLoading] = useState(false);
