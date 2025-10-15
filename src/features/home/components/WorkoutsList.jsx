@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { useWorkouts } from "../hooks/useWorkouts";
+import { Trash } from "lucide-react";
+
+import { useDeleteWorkout, useWorkouts } from "../hooks/useWorkouts";
+
+import { WorkoutModal } from "./WorkoutModal";
 
 import { SectionTitle } from "../../../shared/ui/SectionTitle";
 import { Modal } from "../../../shared/ui/Modal";
-import { WorkoutModal } from "./WorkoutModal";
 
 function WorkoutsList() {
   const workouts = useWorkouts();
@@ -24,6 +27,7 @@ function WorkoutsList() {
         {workouts.map((wk) => (
           <WorkoutElement
             key={wk.id}
+            id={wk.id}
             title={wk.title}
             duration={wk.duration}
             exercises={wk.exercises.length}
@@ -43,14 +47,25 @@ function WorkoutsList() {
   );
 }
 
-function WorkoutElement({ title, duration, exercises, onClick }) {
+function WorkoutElement({ title, duration, exercises, id, onClick }) {
+  const deleteWorkout = useDeleteWorkout();
+
+  function handleDelete(e) {
+    e.stopPropagation();
+    deleteWorkout(id);
+  }
+
   return (
     <div
       onClick={onClick}
-      className="grid cursor-pointer grid-cols-1 items-center rounded-md border border-neutral-400 bg-neutral-100 p-2 text-center sm:grid-cols-[2fr_1fr] sm:grid-rows-2">
+      className="relative grid cursor-pointer grid-cols-1 items-center rounded-md border border-neutral-400 bg-neutral-100 p-2 text-center sm:grid-cols-[2fr_1fr] sm:grid-rows-2">
       <p className="row-span-2 font-semibold">{title}</p>
       <span className="mt-2 sm:mt-0">{duration} min.</span>
       <span>{exercises} exercises</span>
+      <Trash
+        onClick={handleDelete}
+        className="absolute top-1/2 right-5 size-7 -translate-y-1/2"
+      />
     </div>
   );
 }
