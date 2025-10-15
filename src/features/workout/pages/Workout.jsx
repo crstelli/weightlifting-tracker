@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 import {
@@ -5,6 +6,7 @@ import {
   useExercises,
   useReset,
   useWorkout,
+  useIncrementTime,
 } from "../hooks/useWorkout";
 import { useAddWorkout } from "../../home/hooks/useWorkouts";
 
@@ -16,6 +18,7 @@ import { Button } from "../../../shared/ui/Button";
 
 import { Title } from "../components/Title";
 import { Exercise } from "../components/Exercise";
+import { Timer } from "../components/Timer";
 
 function Workout() {
   const navigate = useNavigate();
@@ -23,6 +26,8 @@ function Workout() {
   const exercises = useExercises();
   const workout = useWorkout();
   const reset = useReset();
+
+  const incrementTime = useIncrementTime();
 
   const addWorkout = useAddWorkout();
   const addExercise = useAddExercise();
@@ -32,7 +37,7 @@ function Workout() {
       id: workout.id,
       title: workout.title,
       exercises: [...workout.exercises],
-      duration: 60,
+      duration: Math.trunc(workout.duration / 60),
     };
 
     addWorkout(newWorkout);
@@ -45,6 +50,12 @@ function Workout() {
     navigate("/home");
     reset();
   }
+
+  useEffect(() => {
+    const timer = setInterval(incrementTime, 1000);
+
+    return () => clearInterval(timer);
+  }, [incrementTime]);
 
   return (
     <div className="relative min-h-screen pb-10">
@@ -60,6 +71,7 @@ function Workout() {
           Add Exercise
         </ButtonAdd>
         <div className="mt-10">
+          <Timer time={workout.duration} />
           {exercises.length > 0 && (
             <Button
               onClick={handleFinish}
@@ -70,6 +82,7 @@ function Workout() {
               Finish Workout
             </Button>
           )}
+
           <Button
             onClick={handleDiscard}
             bg={"bg-gradient-to-l from-red-400/80 to-red-400 text-neutral-800"}

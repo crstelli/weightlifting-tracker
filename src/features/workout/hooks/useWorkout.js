@@ -5,6 +5,8 @@ export const useWorkout = () => useWorkoutStore((state) => state);
 export const useReset = () => useWorkoutStore((state) => state.reset);
 export const useTitle = () => useWorkoutStore((state) => state.title);
 export const useSetTitle = () => useWorkoutStore((state) => state.setTitle);
+export const useIncrementTime = () =>
+  useWorkoutStore((state) => state.incrementTime);
 
 // Exercises Logic
 export const useExercises = () => useWorkoutStore((state) => state.exercises);

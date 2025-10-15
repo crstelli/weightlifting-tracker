@@ -14,6 +14,7 @@ function getInitialState() {
     id: Date.now(),
     title: "My New Workout",
     exercises: [],
+    duration: 0,
   };
 }
 
@@ -30,6 +31,11 @@ export const useWorkoutStore = create(
     reset: () => {
       set(() => getInitialState());
     },
+
+    incrementTime: () =>
+      set((state) => {
+        state.duration++;
+      }),
 
     // Exercise Logic
     addExercise: () =>
